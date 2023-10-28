@@ -7,5 +7,5 @@ Content-Type: application/json
     "title": "I am test blog",
     "author": "Mister Minit",
     "url": "localhost",
-    "likes": 3
+    "likes": 10
 }
