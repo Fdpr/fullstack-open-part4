@@ -82,3 +82,96 @@ describe('total likes', () => {
         expect(listHelper.totalLikes(longList)).toBe(40)
     })
 })
+
+describe("favorite blog", () => {
+    test('of an empty list', () => expect(listHelper.favoriteBlog([])).toEqual({}))
+
+    const listWithOneBlog = [
+        {
+            _id: '5a422aa71b54a676234d17f8',
+            title: 'Go To Statement Considered Harmful',
+            author: 'Edsger W. Dijkstra',
+            url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
+            likes: 5,
+            __v: 0
+        }
+    ]
+
+    test('of a list with one entry', () => {
+        expect(listHelper.favoriteBlog(listWithOneBlog)).toEqual({
+            title: listWithOneBlog[0].title,
+            author: listWithOneBlog[0].author,
+            likes: listWithOneBlog[0].likes
+        })
+    })
+
+    const normalList = [
+        {
+            "_id": "653d623e6c9f6b487612fd23",
+            "title": "I am test blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 3,
+            "__v": 0
+        },
+        {
+            "_id": "653d635d35555dd4c18c39e9",
+            "title": "I am another blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 4,
+            "__v": 0
+        },
+        {
+            "_id": "653d64d0624f7ff7b298a292",
+            "title": "I am yet another blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 2,
+            "__v": 0
+        }
+    ]
+
+    test("of a list with some entries", () => {
+        expect(listHelper.favoriteBlog(normalList)).toEqual({
+            title: normalList[1].title,
+            author: normalList[1].author,
+            likes: normalList[1].likes
+        })
+    })
+
+    const listWithTie = [
+        {
+            "_id": "653d623e6c9f6b487612fd23",
+            "title": "I am test blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 4,
+            "__v": 0
+        },
+        {
+            "_id": "653d635d35555dd4c18c39e9",
+            "title": "I am another blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 4,
+            "__v": 0
+        },
+        {
+            "_id": "653d64d0624f7ff7b298a292",
+            "title": "I am yet another blog",
+            "author": "Mister Minit",
+            "url": "localhost",
+            "likes": 4,
+            "__v": 0
+        }
+    ]
+
+    test("of a list with a tie", () => {
+        expect(listHelper.favoriteBlog(listWithTie)).toEqual({
+            title: listWithTie[0].title,
+            author: listWithTie[0].author,
+            likes: listWithTie[0].likes
+        })
+    })
+})
