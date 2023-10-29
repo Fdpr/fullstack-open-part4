@@ -156,11 +156,10 @@ describe("PUT requesting to update a blog", () => {
             likes: 1000
         }
         const allBlogs = await helper.blogsInDb()
-        const receivedBlog = await api
+        await api
             .put(`/api/blogs/${allBlogs[0].id}`)
             .send(updatedBlog)
             .expect(200)
-        console.log(receivedBlog.body)
     }, 100000)
 
 })

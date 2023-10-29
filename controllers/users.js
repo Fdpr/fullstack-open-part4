@@ -8,6 +8,8 @@ usersRouter.get('/', async (request, response) => {
 })
 
 usersRouter.post('/', async (request, response) => {
+    if (!request.body.password || request.body.password.length < 3)
+        return response.status(400).json({error: "password of at least length 3 must be given", password: response.password})
     const { username, name, password } = request.body
 
     const saltRounds = 10
@@ -22,16 +24,6 @@ usersRouter.post('/', async (request, response) => {
     const savedUser = await user.save()
 
     response.status(201).json(savedUser)
-})
-
-usersRouter.delete("/:id", async (request, response) => {
-    await User.findByIdAndDelete(request.params.id)
-    response.status(204).end()
-})
-
-usersRouter.put("/:id", async (request, response) => {
-    const newBlog = await User.findByIdAndUpdate(request.params.id, request.body, { new: true, runValidators: true, context: 'query' })
-    response.json(newBlog)
 })
 
 module.exports = usersRouter
