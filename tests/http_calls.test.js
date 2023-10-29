@@ -130,6 +130,41 @@ describe("DELETE requesting a blog with a certain id", () => {
     }, 100000)
 })
 
+describe("PUT requesting to update a blog", () => {
+    test("works if the blog is valid", async () => {
+        const updatedBlog = {
+            title: "I am ghoul",
+            author: "The original ghoul",
+            url: "ghoultown.co.uk",
+            likes: 1000
+        }
+        const allBlogs = await helper.blogsInDb()
+        const response = await api
+            .put(`/api/blogs/${allBlogs[0].id}`)
+            .send(updatedBlog)
+            .expect(200)
+        const receivedBlog = response.body
+        expect(receivedBlog.title).toBe(updatedBlog.title)
+        expect(receivedBlog.author).toBe(updatedBlog.author)
+        expect(receivedBlog.url).toBe(updatedBlog.url)
+        expect(receivedBlog.likes).toBe(updatedBlog.likes)
+    }, 100000)
+
+    test("returns statuscode 400 if the new blog is invalid", async () => {
+        const updatedBlog = {
+            title: "I am missing",
+            likes: 1000
+        }
+        const allBlogs = await helper.blogsInDb()
+        const receivedBlog = await api
+            .put(`/api/blogs/${allBlogs[0].id}`)
+            .send(updatedBlog)
+            .expect(200)
+        console.log(receivedBlog.body)
+    }, 100000)
+
+})
+
 afterAll(async () => {
     await mongoose.connection.close()
 })

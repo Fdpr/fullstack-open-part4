@@ -9,3 +9,15 @@ Content-Type: application/json
     "url": "localhost",
     "likes": 15
 }
+###
+DELETE http://localhost:3001/api/blogs/653d62096c9f6b487612fd20
+###
+PUT http://localhost:3001/api/blogs/653d623e6c9f6b487612fd23
+Content-Type: application/json
+
+{
+    "title": "title",
+    "author": "author",
+    "url": "myURL",
+    "likes": "veryCool"
+}
