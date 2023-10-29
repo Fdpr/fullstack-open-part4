@@ -2,12 +2,16 @@ const Blog = require('../models/blog')
 
 const initialBlogs = [
     {
-        content: 'HTML is easy',
-        important: false,
+        title: "Why blogging is cool",
+        author: "Mr Minit",
+        url: "localhost",
+        likes: 4
     },
     {
-        content: 'Browser can execute only JavaScript',
-        important: true,
+        title: "Cat food vs dog food",
+        author: "The animal",
+        url: "pets.net",
+        likes: 2
     },
 ]
 

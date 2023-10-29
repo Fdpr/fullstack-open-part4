@@ -68,7 +68,33 @@ test("blogs without likes get initialized with 0 likes", async () => {
 
     expect(receivedBlog.likes).toBeDefined()
     expect(receivedBlog.likes).toBe(0)
-})
+}, 100000)
+
+test("a blog post without title is rejected", async () => {
+    const blog = {
+        author: "Barbara",
+        url: "0.0.0.0",
+        likes: 4
+    }
+
+    await api
+        .post("/api/blogs")
+        .send(blog)
+        .expect(400)
+}, 100000)
+
+test("a blog post without URL is rejected", async () => {
+    const blog = {
+        title: "new Blog",
+        author: "Barbara",
+        likes: 4
+    }
+
+    await api
+        .post("/api/blogs")
+        .send(blog)
+        .expect(400)
+}, 100000)
 
 afterAll(async () => {
     await mongoose.connection.close()
