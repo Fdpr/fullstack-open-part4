@@ -53,6 +53,24 @@ test('POST api/blogs pushes blog to server and saves content', async () => {
     expect(receivedBlog.likes).toBe(blog.likes)
 }, 100000)
 
+test("blogs without likes get initialized with 0 likes", async () => {
+    const blog = {
+        title: "new Blog",
+        author: "Barbara",
+        url: "0.0.0.0",
+    }
+
+    const response = await api
+        .post("/api/blogs")
+        .send(blog)
+    
+    const receivedBlog = response.body
+
+    expect(receivedBlog.likes).toBeDefined()
+    expect(receivedBlog.likes).toBe(0)
+})
+
 afterAll(async () => {
     await mongoose.connection.close()
 })
+
