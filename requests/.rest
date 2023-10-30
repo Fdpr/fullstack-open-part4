@@ -2,16 +2,17 @@ GET http://localhost:3001/api/blogs
 ###
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY2t5IiwiaWQiOiI2NTNmZDVhMzk4Yjg5YjQwN2U4MTI4OTkiLCJpYXQiOjE2OTg2ODQ0MDksImV4cCI6MTY5ODY4ODAwOX0.6HKpffRRid3Uh8Es99TRVWK6d8npJJNNfUdMbNWCwPE
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY2t5IiwiaWQiOiI2NTNmZDVhMzk4Yjg5YjQwN2U4MTI4OTkiLCJpYXQiOjE2OTg2ODQ4MzMsImV4cCI6MTY5ODY4ODQzM30.OmVKCmMJsydzoWtyD9B4KNMPMmkZSx5BLwdjzYLSZ1E
 
 {
     "title": "Test me!",
     "author": "Per",
     "url": "localhost",
-    "likes": 15
+    "likes": 150
 }
 ###
-DELETE http://localhost:3001/api/blogs/653d62096c9f6b487612fd20
+DELETE http://localhost:3001/api/blogs/653fd5a398b89b407e812899
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY2t5IiwiaWQiOiI2NTNmZDVhMzk4Yjg5YjQwN2U4MTI4OTkiLCJpYXQiOjE2OTg2ODUxMzQsImV4cCI6MTY5ODY4ODczNH0.vtTeMpBrw1d4BSW23aXO0WdekRdH78fkz_fp6RfKHy8
 ###
 PUT http://localhost:3001/api/blogs/653d623e6c9f6b487612fd23
 Content-Type: application/json
