@@ -2,10 +2,11 @@ GET http://localhost:3001/api/blogs
 ###
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY2t5IiwiaWQiOiI2NTNmZDVhMzk4Yjg5YjQwN2U4MTI4OTkiLCJpYXQiOjE2OTg2ODQ0MDksImV4cCI6MTY5ODY4ODAwOX0.6HKpffRRid3Uh8Es99TRVWK6d8npJJNNfUdMbNWCwPE
 
 {
-    "title": "I am test blog 4",
-    "author": "Harald",
+    "title": "Test me!",
+    "author": "Per",
     "url": "localhost",
     "likes": 15
 }
