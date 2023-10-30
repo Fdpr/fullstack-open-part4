@@ -11,15 +11,15 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY
     "likes": 150
 }
 ###
-DELETE http://localhost:3001/api/blogs/653fd5a398b89b407e812899
+DELETE http://localhost:3001/api/blogs/653fdfac813733f35b9870ba
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhY2t5IiwiaWQiOiI2NTNmZDVhMzk4Yjg5YjQwN2U4MTI4OTkiLCJpYXQiOjE2OTg2ODUxMzQsImV4cCI6MTY5ODY4ODczNH0.vtTeMpBrw1d4BSW23aXO0WdekRdH78fkz_fp6RfKHy8
 ###
-PUT http://localhost:3001/api/blogs/653d623e6c9f6b487612fd23
+PUT http://localhost:3001/api/blogs/653fd5a398b89b407e812899
 Content-Type: application/json
 
 {
     "title": "title",
     "author": "author",
     "url": "myURL",
-    "likes": "veryCool"
+    "likes": 15
 }
