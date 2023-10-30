@@ -9,7 +9,7 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/', async (request, response) => {
     const user = request.user
     if (!user) {
-        return response.status(401).json({error: "no user token given"})
+        return response.status(401).json({ error: "no or invalid user token given" })
     }
     const blog = new Blog({ ...request.body, user: user._id })
 
@@ -23,7 +23,7 @@ blogsRouter.post('/', async (request, response) => {
 blogsRouter.delete("/:id", async (request, response) => {
     const user = request.user
     if (!user) {
-        return response.status(401).json({error: "no user token given"})
+        return response.status(401).json({ error: "no user token given" })
     }
     const blog = await Blog.findById(request.params.id)
     if (!blog) {
@@ -37,8 +37,20 @@ blogsRouter.delete("/:id", async (request, response) => {
 })
 
 blogsRouter.put("/:id", async (request, response) => {
-    const newBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, { new: true, runValidators: true, context: 'query' })
-    response.json(newBlog)
+    const user = request.user
+    if (!user) {
+        return response.status(401).json({ error: "no user token given" })
+    }
+    const blog = await Blog.findById(request.params.id)
+    if (!blog) {
+        return response.status(204).end()
+    }
+    else if (blog.user._id.toString() === user._id.toString()) {
+        const newBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, { new: true, runValidators: true, context: 'query' })
+        response.json(newBlog)
+    } else
+        response.status(401).json({ error: "user not authorized to delete this blog" })
+
 })
 
 module.exports = blogsRouter

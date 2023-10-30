@@ -11,7 +11,7 @@ describe("POST requesting a new user", () => {
     
     beforeEach(async () => {
         await User.deleteMany({})
-    })
+    }, 100000)
     
 
     test("saves the user if it is valid and returns statuscode 201", async () => {
